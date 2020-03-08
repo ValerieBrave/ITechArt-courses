@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PhoneCatalog</title>
+    <style>
+        .catalog
+        {
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: Tahoma;
+        }
+        table, tr, td
+        {
+            border: 1px solid black;
+        }
+        .top_line
+        {
+            height: 30px;
+            background-color: mediumseagreen;
+        }
+        .line
+        {
+            height: 30px;
+        }
+        .top_cell, .cell
+        {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<h1 style="font-style: italic; text-align: center">Phone Numbers</h1>
+{% if message %}
+    <p><strong>{{ message }}</strong></p>
+{% endif %}
+{% if latest_phones %}
+    <table class="catalog">
+        <tr class="top_line">
+            <td class="top_cell">Name</td>
+            <td class="top_cell">Phone</td>
+            <td class="top_cell">Address</td>
+            <td class="top_cell">Date</td>
+        </tr>
+        {% for phone in latest_phones %}
+            <tr class="line">
+                <td class="cell">{{ phone.name}}</td>
+                <td class="cell">{{ phone.phone}}</td>
+                <td class="cell">{{ phone.address}}</td>
+                <td class="cell">{{ phone.reg_date}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>There is no phones in this catalog</p>
+{% endif %}
+
+</body>
+</html>
